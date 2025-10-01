@@ -11,17 +11,16 @@
   <link rel="shortcut icon" href="images/favicon.ico">
   <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
 
-  <!-- Theme colors for browser UI -->
+  <!-- Theme colors -->
   <meta name="theme-color" content="#0b0b0c">
 
   <style>
-    :root{
-      --bottom-stack-space: 200px; /* space reserved for testflight + disclaimer + footer */
+    :root {
+      --bottom-stack-space: 200px; /* reserved for bottom items */
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
-    /* Root gradient covers entire screen */
     html {
       min-height: 100svh;
       width: 100%;
@@ -45,23 +44,21 @@
       text-align: center;
       overflow: hidden;
       position: relative;
-      color: white; /* always white text */
+      color: white;
       background: transparent;
-
-      /* Respect safe areas but keep space for fixed elements */
       padding-bottom: calc(var(--bottom-stack-space) + env(safe-area-inset-bottom));
       padding-top: env(safe-area-inset-top);
       padding-left: env(safe-area-inset-left);
       padding-right: env(safe-area-inset-right);
     }
 
-    /* Animated overlay gradient */
+    /* Animated overlay gradient, extended way beyond viewport */
     .gradient {
       position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
+      top: -150%;
+      left: -150%;
+      width: 400%;
+      height: 400%;
       z-index: -2;
       opacity: 0;
       background:
@@ -82,14 +79,13 @@
     }
     @keyframes fadeInGradient { from { opacity: 0; } to { opacity: 1; } }
 
-    /* Subtle overlays for dark/light */
     body::after {
       content: "";
       position: fixed;
       inset: 0;
       z-index: -1;
       pointer-events: none;
-      background: rgba(0,0,0,0.4); /* always slight dark tint */
+      background: rgba(0,0,0,0.4); /* slight tint always */
     }
 
     main {
@@ -106,7 +102,6 @@
       to   { opacity: 1; transform: translateY(0); }
     }
 
-    /* Logo */
     .logo {
       max-width: 200px;
       border-radius: 3rem;
